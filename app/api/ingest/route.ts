@@ -5,7 +5,7 @@ import { createAdminClient } from "@/lib/supabase/server"
 
 //.Validate the incoming JSON payload
 const MeasurementSchema = z.object({
-    recorded_at: z.iso.datetime(),
+    recorded_at: z.iso.datetime({ offset: true }),
     temperature: z.number().optional(),
     pressure:    z.number().optional(),
     humidity:    z.number().optional(),
