@@ -47,9 +47,9 @@ export default function MeasurementsTable({
   }, [])
 
   return (
-    <div className="overflow-x-auto rounded-lg border border-gray-200">
-      <table className="w-full text-sm">
-        <thead className="bg-gray-50 text-gray-600">
+    <div className="overflow-x-auto rounded-lg border border-gray-700 mt-8">
+      <table className="w-full text-sm bg-gray-900">
+        <thead className="bg-gray-800 text-gray-400">
           <tr>
             <th className="px-4 py-3 text-left">Time</th>
             <th className="px-4 py-3 text-right">Temp (°C)</th>
@@ -59,10 +59,10 @@ export default function MeasurementsTable({
             <th className="px-4 py-3 text-right">UV</th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-100">
+        <tbody className="divide-y divide-gray-700">
           {measurements.map((m) => (
-            <tr key={m.id} className="hover:bg-gray-50">
-              <td className="px-4 py-3 text-gray-600">
+            <tr key={m.id} className="hover:bg-gray-800 text-gray-300">
+              <td className="px-4 py-3 text-gray-400">
                 {new Date(m.recorded_at).toLocaleString('de-DE', {
                   timeZone: 'Europe/Berlin',
                 })}
