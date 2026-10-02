@@ -122,16 +122,16 @@ export function CurrentConditions({ latest }: { latest: Measurement | null }) {
   ]
 
   return (
-    <div className="rounded-lg border border-gray-700 bg-gray-900 p-6 mb-6">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-medium text-white">Current Conditions</h2>
-        <span className="text-xs text-gray-400">Last updated: {time} CEST</span>
+    <div className="rounded-lg border border-gray-700 bg-gray-900 p-4 mb-6">
+      <div className="flex justify-between items-center mb-3">
+        <h2 className="text-base font-medium text-white">Current Conditions</h2>
+        <span className="text-xs text-gray-400">{time} CEST</span>
       </div>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-5">
+      <div className="grid grid-cols-5 gap-1">
         {items.map(({ label, value, unit, emoji }) => (
           <div key={label} className="text-center">
-            <div className="text-2xl mb-1">{emoji}</div>
-            <div className="text-xl font-medium text-white">
+            <div className="text-lg mb-1">{emoji}</div>
+            <div className="text-sm font-medium text-white leading-tight">
               {value ?? '—'}{unit}
             </div>
             <div className="text-xs text-gray-400 mt-1">{label}</div>
