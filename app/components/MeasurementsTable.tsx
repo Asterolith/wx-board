@@ -7,8 +7,8 @@ type Measurement = {
   id: number
   recorded_at: string
   temperature: number | null
-  pressure: number | null
   humidity: number | null
+  pressure: number | null
   aqi: number | null
   uv: number | null
 }
@@ -53,8 +53,8 @@ export default function MeasurementsTable({
           <tr>
             <th className="px-4 py-3 text-left">Time</th>
             <th className="px-4 py-3 text-right">Temp (°C)</th>
-            <th className="px-4 py-3 text-right">Pressure (hPa)</th>
             <th className="px-4 py-3 text-right">Humidity (%)</th>
+            <th className="px-4 py-3 text-right">Pressure (hPa)</th>
             <th className="px-4 py-3 text-right">AQI</th>
             <th className="px-4 py-3 text-right">UV</th>
           </tr>
@@ -68,8 +68,8 @@ export default function MeasurementsTable({
                 })}
               </td>
               <td className="px-4 py-3 text-right">{m.temperature ?? '—'}</td>
-              <td className="px-4 py-3 text-right">{m.pressure ?? '—'}</td>
               <td className="px-4 py-3 text-right">{m.humidity ?? '—'}</td>
+              <td className="px-4 py-3 text-right">{m.pressure ?? '—'}</td>              
               <td className="px-4 py-3 text-right">{m.aqi ?? '—'}</td>
               <td className="px-4 py-3 text-right">{m.uv ?? '—'}</td>
             </tr>

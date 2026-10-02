@@ -80,11 +80,11 @@ function SingleChart({
                 : ['—', config.label]
             }}
             labelFormatter={(label) => {
-              const match = chartData.find((d) => d.shortDate === label)
+              const match = chartData.find((d) => d.time === label)
               return match
                 ? new Date(match.recorded_at).toLocaleString('de-DE', {
                     timeZone: 'Europe/Berlin',
-                    day: '2-digit', month: '2-digit', year: 'numeric',
+                    day: '2-digit', month: '2-digit', year: '2-digit',
                     hour: '2-digit', minute: '2-digit',
                   })
                 : label
@@ -109,7 +109,7 @@ export function CurrentConditions({ latest }: { latest: Measurement | null }) {
 
   const time = new Date(latest.recorded_at).toLocaleString('de-DE', {
     timeZone: 'Europe/Berlin',
-    day: '2-digit', month: '2-digit', year: 'numeric',
+    day: '2-digit', month: '2-digit', year: '2-digit',
     hour: '2-digit', minute: '2-digit',
   })
 
@@ -145,13 +145,18 @@ export function CurrentConditions({ latest }: { latest: Measurement | null }) {
 export default function MeasurementCharts({ data }: { data: Measurement[] }) {
   const chartData: ChartData[] = [...data].reverse().map((m) => ({
     ...m,
-    shortDate: new Date(m.recorded_at).toLocaleDateString('de-DE', {
+    shortDate: new Date(m.recorded_at).toLocaleString('de-DE', {
       timeZone: 'Europe/Berlin',
-      day: '2-digit', month: '2-digit',
+      day:   '2-digit',
+      month: '2-digit',
+      year:  '2-digit',
+      hour:  '2-digit',
+      minute:'2-digit',
     }),
-    time: new Date(m.recorded_at).toLocaleDateString('de-DE', {
+    time: new Date(m.recorded_at).toLocaleString('de-DE', {
       timeZone: 'Europe/Berlin',
-      day: '2-digit', month: '2-digit',
+      hour:  '2-digit',
+      minute:'2-digit',
     }),
   }))
 
