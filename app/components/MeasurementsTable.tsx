@@ -27,16 +27,20 @@ export default function MeasurementsTable({
       .channel('measurements-changes')
       .on(
         'postgres_changes',
-        {
-          event: 'INSERT',
-          schema: 'public',
-          table: 'measurements',
-        },
+        { event: 'INSERT', schema: 'public', table: 'measurements' },
         (payload) => {
-          setMeasurements((current) => [
-            payload.new as Measurement,
-            ...current,
-          ])
+          setMeasurements((current) => 
+            [payload.new as Measurement, ...current]
+          )
+        }
+      )
+      .on(
+        'postgres_changes',
+        { event: 'DELETE', schema: 'public', table: 'measurements' },
+        (payload) => {
+          setMeasurements((current) =>
+            current.filter((m) => m.id !== payload.old.id)
+          )
         }
       )
       .subscribe()

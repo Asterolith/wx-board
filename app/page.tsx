@@ -1,6 +1,6 @@
-import { createClient } from '@/lib/supabase/server'
+import { createClient }  from '@/lib/supabase/server'
 import MeasurementsTable from '@/app/components/MeasurementsTable'
-import MeasurementCharts, { CurrentConditions } from '@/app/components/MeasurementCharts'
+import MeasurementCharts from '@/app/components/MeasurementCharts'
 
 export const revalidate = 0
 
@@ -11,14 +11,13 @@ async function getMeasurements() {
     .select('*')
     .order('recorded_at', { ascending: false })
     .limit(50)
-
   if (error) throw new Error(error.message)
   return data
 }
 
 export default async function Home() {
   const measurements = await getMeasurements()
-  const latest = measurements[0] ?? null
+  // const latest = measurements[0] ?? null
 
   return (
     <main className="max-w-6xl mx-auto p-6 bg-gray-950 min-h-screen">
@@ -27,12 +26,12 @@ export default async function Home() {
       </h1>
 
       {/* Current conditions card */}
-      <CurrentConditions latest={latest} />
+      {/* <CurrentConditions latest={latest} /> */}
 
-      {/* Charts */}
+      {/* Charts + Last Conditions (live) */}
       <MeasurementCharts data={measurements} />
 
-      {/* Table */}
+      {/* Table (live)*/}
       <div className="mt-8">
         <MeasurementsTable initial={measurements} />
       </div>
